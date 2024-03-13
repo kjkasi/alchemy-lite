@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  api:
+    container_name: api
+    image: api
+    environment:
+      - DATABASE_BASE=memory
+      #- DATABASE_BASE=/app/tests/file.db
+      - ENVIRONMENT=TESTING
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+      # - 5678:5678
+    volumes:
+    #  - ./requirements.txt:/app/requirements.txt:ro
+     - ./src/:/app/src/:ro
